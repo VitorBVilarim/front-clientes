@@ -27,23 +27,22 @@
             </div>
             <ul id="side_itens">
 
-                <li class="side_item">
+                <li class="side_item " id="botao-consultar">
                     <a href="#">
                         <i class="fa-solid fa-magnifying-glass"></i>
-                        <span class="item_description">
+                        <span class="item_description" content-id="consultar">
                             Consultar
                         </span>
-                    </a>
-                </li>
-                <li class="side_item active">
+                <li class="side_item active " id="botao-cadastrar">
                     <a href="#">
                         <i class="fa-solid fa-user"></i>
-                        <span class="item_description">
+                        <span class="item_description" content-id="cadastrar">
                             Cadastrar
                         </span>
                     </a>
                 </li>
-
+                </a>
+                </li>
             </ul>
         </div>
     </nav>
@@ -51,67 +50,165 @@
         <div class="form-image">
             <img src="/src/img/undraw_interview_re_e5jn.svg">
         </div>
-        <div class="form">
-            <form action="#">
-                <div class="form-header">
-                    <div class="title">
-                        <h1>Cadastrar Cliente</h1>
-                    </div>
 
-                </div>
-                <div class="input-group">
-                    <div class="input-box">
-                        <label for="name">Nome</label>
-                        <input id="name" type="text" name="name" placeholder="Digite o nome do cliente" required>
-                    </div>
-                </div>
-                <div class="input-box">
-                    <label for="">Telefone</label>
-                    <input id="number" type="tel" name="number" placeholder="(xx) xxxxx-xxxx" required>
-                </div>
-                <div class="input-group">
-                    <div class="input-box">
-                        <label for="cpf">CPF</label>
-                        <input id="cpf" type="number" name="cpf" placeholder="xxxxxxxxxxx" required>
-                    </div>
-                    <div class="input-group">
-                        <div class="input-box">
-                            <label for="email">Email</label>
-                            <input id="email" type="email" name="email" placeholder="Digite o email do cliente"
-                                required>
+        <div class="tab-contents">
+
+            <div class="content " id="consultar">
+                <div class="form">
+                    <form action="#">
+                        <div class="form-header">
+                            <div class="title">
+                                <h1>Consultar Cliente</h1>
+                            </div>
+
+                        </div>
+                        <div class="search-client">
+                            <div class="input-box search">
+                                <input id="cpf-search" type="search" name="cpf-search"
+                                    placeholder="Digite o CPF do cliente" required>
+                                <button class="search-button" id="btn-consultar">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                </button>
+                            </div>
                         </div>
                         <div class="input-group">
                             <div class="input-box">
-                                <label for="cep">CEP</label>
-                                <input id="cep" type="number" name="cep" placeholder="xxxxxxxx" required>
+                                <label for="name">Nome</label>
+                                <input id="name-consultar" type="text" name="name-consultar"
+                                    placeholder="Digite o nome do cliente" required>
+                            </div>
+
+                        </div>
+                        <div class="input-group">
+                            <div class="input-box">
+                                <label for="">Telefone</label>
+                                <input id="number-consultar" type="tel" name="number-consultar"
+                                    placeholder="(xx) xxxxx-xxxx" required>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <div class="input-box">
+                                <label for="cpf">CPF</label>
+                                <input id="cpf-consultar" type="number" name="cpf-consultar" placeholder="xxxxxxxxxxx"
+                                    required>
                             </div>
                             <div class="input-group">
                                 <div class="input-box">
-                                    <label for="rua">Rua</label>
-                                    <input id="rua" type="text" name="rua" placeholder="Digite a rua do cliente"
-                                        required>
+                                    <label for="email">Email</label>
+                                    <input id="email-consultar" type="email" name="email-consultar"
+                                        placeholder="Digite o email do cliente" required>
                                 </div>
                                 <div class="input-group">
                                     <div class="input-box">
-                                        <label for="cidade">Cidade</label>
-                                        <input id="cidade" type="text" name="cidade"
-                                            placeholder="Digite a cidade do cliente" required>
+                                        <label for="cep">CEP</label>
+                                        <input id="cep-consultar" type="number" name="cep-consultar"
+                                            placeholder="xxxxxxxx" required>
                                     </div>
-
                                     <div class="input-group">
                                         <div class="input-box">
-                                            <label for="estado">Estado</label>
-                                            <input id="estado" type="text" name="estado" placeholder="XX" required>
+                                            <label for="rua">Rua</label>
+                                            <input id="rua-consultar" type="text" name="rua-consultar"
+                                                placeholder="Digite a rua do cliente" required>
                                         </div>
-                                        <div class="confirm-button">
-                                            <button> <a href="#">Salvar</a> </button>
-                                        </div>
-            </form>
-        </div>
-    </div>
+                                        <div class="input-group">
+                                            <div class="input-box">
+                                                <label for="cidade">Cidade</label>
+                                                <input id="cidade-consultar" type="text" name="cidade-consultar"
+                                                    placeholder="Digite a cidade do cliente" required>
+                                            </div>
 
-    <script src="/src/javascript/script.js"></script>
-    <script src="/src/javascript/cep.js"></script>
+                                            <div class="input-group">
+                                                <div class="input-box">
+                                                    <label for="estado">Estado</label>
+                                                    <input id="estado-consultar" type="text" name="estado-consultar"
+                                                        placeholder="XX" required>
+                                                </div>
+                                                <div class="confirm-button" id="btn-salvar">
+                                                    <button> <a href="#">Salvar</a> </button>
+                                                </div>
+                                                <div class="confirm-delete">
+                                                    <button id="btn-deletar"> <a href="#">
+                                                            <i class="fa-solid fa-xmark"></i>
+                                                        </a> </button>
+                                                </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+            <div class="content" id="cadastrar">
+                <div class="form">
+                    <form action="#">
+                        <div class="form-header">
+                            <div class="title">
+                                <h1>Cadastrar Cliente</h1>
+                            </div>
+
+                        </div>
+                        <div class="input-group">
+                            <div class="input-box">
+                                <label for="name">Nome</label>
+                                <input id="name-cadastro" type="text" name="name-cadastro"
+                                    placeholder="Digite o nome do cliente" required>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <div class="input-box">
+                                <label for="">Telefone</label>
+                                <input id="number-cadastro" type="tel" name="number-cadastro"
+                                    placeholder="(xx) xxxxx-xxxx" required>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <div class="input-box">
+                                <label for="cpf">CPF</label>
+                                <input id="cpf-cadastro" type="number" name="cpf-cadastro" placeholder="xxxxxxxxxxx"
+                                    required>
+                            </div>
+                            <div class="input-group">
+                                <div class="input-box">
+                                    <label for="email">Email</label>
+                                    <input id="email-cadastro" type="email" name="email-cadastro"
+                                        placeholder="Digite o email do cliente" required>
+                                </div>
+                                <div class="input-group">
+                                    <div class="input-box">
+                                        <label for="cep">CEP</label>
+                                        <input id="cep-cadastro" type="number-cadastro" name="cep-cadastro"
+                                            placeholder="xxxxxxxx" required>
+                                    </div>
+                                    <div class="input-group">
+                                        <div class="input-box">
+                                            <label for="rua">Rua</label>
+                                            <input id="rua-cadastro" type="text" name="rua-cadastro"
+                                                placeholder="Digite a rua do cliente" required>
+                                        </div>
+                                        <div class="input-group">
+                                            <div class="input-box">
+                                                <label for="cidade">Cidade</label>
+                                                <input id="cidade-cadastro" type="text-cadastro" name="cidade-cadastro"
+                                                    placeholder="Digite a cidade do cliente" required>
+                                            </div>
+
+                                            <div class="input-group">
+                                                <div class="input-box">
+                                                    <label for="estado">Estado</label>
+                                                    <input id="estado-cadastro" type="text" name="estado-cadastro"
+                                                        placeholder="XX" required>
+                                                </div>
+                                                <div class="confirm-button" id="btn-cadastrar">
+                                                    <button> <a href="#">Cadastrar</a> </button>
+                                                </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="/src/javascript/script.js"></script>
+        <script src="/src/javascript/button.js"></script>
+        <script src="/src/javascript/cep.js"></script>
 </body>
 
 </html>
