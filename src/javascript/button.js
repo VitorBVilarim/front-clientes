@@ -101,15 +101,15 @@ buttonDeletar.addEventListener('click', async (evento) => {
     try {
         await axios.delete(`${url}/clientes/${idClienteComsultado}`)
 
+        document.querySelector('#name-consultar').value = null
+        document.querySelector('#number-consultar').value = null
+        document.querySelector('#cpf-consultar').value = null
+        document.querySelector('#email-consultar').value = null
+        document.querySelector('#cep-consultar').value = null
+        document.querySelector('#rua-consultar').value = null
+        document.querySelector('#cidade-consultar').value = null
+        document.querySelector('#estado-consultar').value = null
     } catch (error) {
-
+        console.log(error.response)
     }
-    document.querySelector('#name-consultar').value = null
-    document.querySelector('#number-consultar').value = null
-    document.querySelector('#cpf-consultar').value = null
-    document.querySelector('#email-consultar').value = null
-    document.querySelector('#cep-consultar').value = null
-    document.querySelector('#rua-consultar').value = null
-    document.querySelector('#cidade-consultar').value = null
-    document.querySelector('#estado-consultar').value = null
 })
