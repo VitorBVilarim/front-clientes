@@ -1,5 +1,5 @@
 const buttonCadastrar = document.querySelector('#btn-cadastrar')
-const url = 'http://localhost:3000'
+const url = 'http://ec2-18-230-201-203.sa-east-1.compute.amazonaws.com:3000'
 
 buttonCadastrar.addEventListener('click', async (evento) => {
     evento.preventDefault()
@@ -90,16 +90,6 @@ buttonSalvar.addEventListener('click', async (evento) => {
             cidade,
             estado
         })
-    } catch (error) {
-        console.log(error.response)
-    }
-})
-
-const buttonDeletar = document.querySelector('#btn-deletar')
-
-buttonDeletar.addEventListener('click', async (evento) => {
-    try {
-        await axios.delete(`${url}/clientes/${idClienteComsultado}`)
 
         document.querySelector('#name-consultar').value = null
         document.querySelector('#number-consultar').value = null
@@ -109,7 +99,31 @@ buttonDeletar.addEventListener('click', async (evento) => {
         document.querySelector('#rua-consultar').value = null
         document.querySelector('#cidade-consultar').value = null
         document.querySelector('#estado-consultar').value = null
+        document.querySelector('#cpf-search').value = null
     } catch (error) {
         console.log(error.response)
     }
+
+})
+
+const buttonDeletar = document.querySelector('#btn-deletar')
+
+buttonDeletar.addEventListener('click', async (evento) => {
+    try {
+        evento.preventDefault()
+
+        await axios.delete(`${url}/clientes/${idClienteComsultado}`)
+
+    } catch (error) {
+        console.log(error.response)
+    }
+    document.querySelector('#name-consultar').value = null
+    document.querySelector('#number-consultar').value = null
+    document.querySelector('#cpf-consultar').value = null
+    document.querySelector('#email-consultar').value = null
+    document.querySelector('#cep-consultar').value = null
+    document.querySelector('#rua-consultar').value = null
+    document.querySelector('#cidade-consultar').value = null
+    document.querySelector('#estado-consultar').value = null
+    document.querySelector('#cpf-search').value = null
 })
