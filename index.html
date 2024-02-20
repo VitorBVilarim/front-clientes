@@ -64,7 +64,7 @@
                         </div>
                         <div class="search-client">
                             <div class="input-box search">
-                                <input id="cpf-search" type="search" name="cpf-search"
+                                <input id="cpf-search" type="search" name="cpf-search" onkeyup="formatarCpf('search')"
                                     placeholder="Digite o CPF do cliente" required>
                                 <button class="search-button" id="btn-consultar">
                                     <i class="fa-solid fa-magnifying-glass"></i>
@@ -83,14 +83,14 @@
                             <div class="input-box">
                                 <label for="">Telefone</label>
                                 <input id="number-consultar" type="tel" name="number-consultar"
-                                    placeholder="(xx) xxxxx-xxxx" required>
+                                    onkeyup="formatarCelular('consultar')" placeholder="(xx) xxxxx-xxxx" required>
                             </div>
                         </div>
                         <div class="input-group">
                             <div class="input-box">
                                 <label for="cpf">CPF</label>
-                                <input id="cpf-consultar" type="number" name="cpf-consultar" placeholder="xxxxxxxxxxx"
-                                    required>
+                                <input id="cpf-consultar" type="text" name="cpf-consultar" placeholder="xxxxxxxxxxx"
+                                    onkeyup="formatarCpf('consultar')" required>
                             </div>
                             <div class="input-group">
                                 <div class="input-box">
@@ -157,14 +157,14 @@
                             <div class="input-box">
                                 <label for="">Telefone</label>
                                 <input id="number-cadastro" type="tel" name="number-cadastro"
-                                    placeholder="(xx) xxxxx-xxxx" required>
+                                    onkeyup="formatarCelular('cadastro')" placeholder="(xx) xxxxx-xxxx" required>
                             </div>
                         </div>
                         <div class="input-group">
                             <div class="input-box">
                                 <label for="cpf">CPF</label>
-                                <input id="cpf-cadastro" type="number" name="cpf-cadastro" placeholder="xxxxxxxxxxx"
-                                    required>
+                                <input id="cpf-cadastro" type="text" name="cpf-cadastro" placeholder="xxxxxxxxxxx"
+                                    onkeyup="formatarCpf('cadastro')" required>
                             </div>
                             <div class="input-group">
                                 <div class="input-box">
@@ -209,6 +209,7 @@
         <script src="/src/javascript/script.js"></script>
         <script src="/src/javascript/button.js"></script>
         <script src="/src/javascript/cep.js"></script>
+        <script src="/src/javascript/regex.js"></script>
 </body>
 
 </html>

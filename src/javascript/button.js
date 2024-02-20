@@ -6,12 +6,14 @@ buttonCadastrar.addEventListener('click', async (evento) => {
 
     const nome = document.querySelector('#name-cadastro').value
     const telefone = document.querySelector('#number-cadastro').value
-    const cpf = document.querySelector('#cpf-cadastro').value
+    const cpf = (document.querySelector('#cpf-cadastro').value).replace(/([0-9]{3})(.)([0-9]{3})(.)([0-9]{3})(-)([0-9]{2})/, "$1$3$5$7")
     const email = document.querySelector('#email-cadastro').value
     const cep = document.querySelector('#cep-cadastro').value
     const rua = document.querySelector('#rua-cadastro').value
     const cidade = document.querySelector('#cidade-cadastro').value
     const estado = document.querySelector('#estado-cadastro').value
+
+
     try {
         await axios.post(url + '/clientes', {
             nome,
@@ -46,17 +48,24 @@ buttonConsultar.addEventListener('click', async (evento) => {
 
     const clienteCpf = document.querySelector('#cpf-search').value
 
-    const cliente = await axios.get(`${url}/clientes/?cpf=${clienteCpf}`)
+    const cliente = await axios.get(`${url}/clientes/?cpf=${clienteCpf.replace(/([0-9]{3})(.)([0-9]{3})(.)([0-9]{3})(-)([0-9]{2})/, "$1$3$5$7")}`)
 
     const { id, nome, telefone, cpf, email, cep, rua, cidade, estado } = cliente.data
+
+
+    let cpfFormatado = cpf
+    if (cpf) {
+        cpfFormatado = cpf.replace(/([0-9]{3})([0-9]{3})([0-9]{3})([0-9]{2})/, '$1.$2.$3-$4')
+    }
 
     idClienteComsultado = id
     if (!id) {
         return alert('o Cliente não existe!')
     }
+
     document.querySelector('#name-consultar').value = nome
     document.querySelector('#number-consultar').value = telefone
-    document.querySelector('#cpf-consultar').value = cpf
+    document.querySelector('#cpf-consultar').value = cpfFormatado
     document.querySelector('#email-consultar').value = email
     document.querySelector('#cep-consultar').value = cep
     document.querySelector('#rua-consultar').value = rua
@@ -73,17 +82,18 @@ buttonSalvar.addEventListener('click', async (evento) => {
     const nome = document.querySelector('#name-consultar').value
     const telefone = document.querySelector('#number-consultar').value
     const cpf = document.querySelector('#cpf-consultar').value
+    const cpfFormatado = cpf.replace(/([0-9]{3})(.)([0-9]{3})(.)([0-9]{3})(-)([0-9]{2})/, "$1$3$5$7")
     const email = document.querySelector('#email-consultar').value
     const cep = document.querySelector('#cep-consultar').value
     const rua = document.querySelector('#rua-consultar').value
     const cidade = document.querySelector('#cidade-consultar').value
     const estado = document.querySelector('#estado-consultar').value
+
     try {
-        console.log(idClienteComsultado)
         await axios.put(`${url}/clientes/${idClienteComsultado}`, {
             nome,
             telefone,
-            cpf,
+            cpf: cpfFormatado,
             email,
             cep,
             rua,
