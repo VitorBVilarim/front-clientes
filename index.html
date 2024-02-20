@@ -101,8 +101,8 @@
                                 <div class="input-group">
                                     <div class="input-box">
                                         <label for="cep">CEP</label>
-                                        <input id="cep-consultar" type="number" name="cep-consultar"
-                                            placeholder="xxxxxxxx" required>
+                                        <input id="cep-consultar" type="text" name="cep-consultar"
+                                            onkeyup="formatarCep('consultar')" placeholder="xxxxxxxx" required>
                                     </div>
                                     <div class="input-group">
                                         <div class="input-box">
@@ -175,8 +175,8 @@
                                 <div class="input-group">
                                     <div class="input-box">
                                         <label for="cep">CEP</label>
-                                        <input id="cep-cadastro" type="number-cadastro" name="cep-cadastro"
-                                            placeholder="xxxxxxxx" required>
+                                        <input id="cep-cadastro" type="text" name="cep-cadastro"
+                                            onkeyup="formatarCep('cadastro')" placeholder="xxxxxxxx" required>
                                     </div>
                                     <div class="input-group">
                                         <div class="input-box">

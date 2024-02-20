@@ -13,3 +13,11 @@ function formatarCpf(parametro) {
 
     document.querySelector(`#cpf-${parametro}`).value = cpfFormatado
 }
+
+function formatarCep(parametro) {
+    const cep = document.querySelector(`#cep-${parametro}`).value
+
+    const cepFormatado = cep.replace(/([0-9]{5})([0-9]{3})/, '$1-$2')
+
+    document.querySelector(`#cep-${parametro}`).value = cepFormatado
+}

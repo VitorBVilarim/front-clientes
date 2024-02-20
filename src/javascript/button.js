@@ -6,21 +6,24 @@ buttonCadastrar.addEventListener('click', async (evento) => {
 
     const nome = document.querySelector('#name-cadastro').value
     const telefone = document.querySelector('#number-cadastro').value
-    const cpf = (document.querySelector('#cpf-cadastro').value).replace(/([0-9]{3})(.)([0-9]{3})(.)([0-9]{3})(-)([0-9]{2})/, "$1$3$5$7")
+    const cpf = document.querySelector('#cpf-cadastro').value
+    const cpfFormatado = cpf.replace(/([0-9]{3})(.)([0-9]{3})(.)([0-9]{3})(-)([0-9]{2})/, "$1$3$5$7")
     const email = document.querySelector('#email-cadastro').value
     const cep = document.querySelector('#cep-cadastro').value
+    const cepFormatado = cep.replace(/([0-9]{5})(-)([0-9]{3})/, '$1$3')
     const rua = document.querySelector('#rua-cadastro').value
     const cidade = document.querySelector('#cidade-cadastro').value
     const estado = document.querySelector('#estado-cadastro').value
+
 
 
     try {
         await axios.post(url + '/clientes', {
             nome,
             telefone,
-            cpf,
+            cpf: cpfFormatado,
             email,
-            cep,
+            cep: cepFormatado,
             rua,
             cidade,
             estado
@@ -52,10 +55,11 @@ buttonConsultar.addEventListener('click', async (evento) => {
 
     const { id, nome, telefone, cpf, email, cep, rua, cidade, estado } = cliente.data
 
-
     let cpfFormatado = cpf
-    if (cpf) {
+    let cepFormatado = cep
+    if (cpf || cep) {
         cpfFormatado = cpf.replace(/([0-9]{3})([0-9]{3})([0-9]{3})([0-9]{2})/, '$1.$2.$3-$4')
+        cepFormatado = cep.replace(/([0-9]{5})([0-9]{3})/, '$1-$2')
     }
 
     idClienteComsultado = id
@@ -67,7 +71,7 @@ buttonConsultar.addEventListener('click', async (evento) => {
     document.querySelector('#number-consultar').value = telefone
     document.querySelector('#cpf-consultar').value = cpfFormatado
     document.querySelector('#email-consultar').value = email
-    document.querySelector('#cep-consultar').value = cep
+    document.querySelector('#cep-consultar').value = cepFormatado
     document.querySelector('#rua-consultar').value = rua
     document.querySelector('#cidade-consultar').value = cidade
     document.querySelector('#estado-consultar').value = estado
@@ -85,6 +89,7 @@ buttonSalvar.addEventListener('click', async (evento) => {
     const cpfFormatado = cpf.replace(/([0-9]{3})(.)([0-9]{3})(.)([0-9]{3})(-)([0-9]{2})/, "$1$3$5$7")
     const email = document.querySelector('#email-consultar').value
     const cep = document.querySelector('#cep-consultar').value
+    const cepFormatado = cep.replace(/([0-9]{5})(-)([0-9]{3})/, '$1$3')
     const rua = document.querySelector('#rua-consultar').value
     const cidade = document.querySelector('#cidade-consultar').value
     const estado = document.querySelector('#estado-consultar').value
@@ -95,7 +100,7 @@ buttonSalvar.addEventListener('click', async (evento) => {
             telefone,
             cpf: cpfFormatado,
             email,
-            cep,
+            cep: cepFormatado,
             rua,
             cidade,
             estado
