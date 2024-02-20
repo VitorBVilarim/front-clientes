@@ -1,6 +1,6 @@
 const buttonCadastrar = document.querySelector('#btn-cadastrar')
 const url = 'http://ec2-18-230-201-203.sa-east-1.compute.amazonaws.com:3000'
-
+console.log(url)
 buttonCadastrar.addEventListener('click', async (evento) => {
     evento.preventDefault()
 
