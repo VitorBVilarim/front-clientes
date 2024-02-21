@@ -21,9 +21,6 @@ function botaoClicked(botao) {
         conteudo.classList.remove('show')
     })
 
-
-
-
     const conteudoId = botao.getAttribute('content-id')
     const content = document.getElementById(conteudoId)
 

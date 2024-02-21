@@ -18,7 +18,7 @@ buttonCadastrar.addEventListener('click', async (evento) => {
 
 
     try {
-        await axios.post(url + '/clientes', {
+        const cadastrarCliente = await axios.post(url + '/clientes', {
             nome,
             telefone,
             cpf: cpfFormatado,
@@ -28,8 +28,12 @@ buttonCadastrar.addEventListener('click', async (evento) => {
             cidade,
             estado
         })
+
+
     } catch (error) {
-        console.log(error.response)
+        if (error.response.status === 400) {
+            return alert('o CPF ou o Email informado já possui cadastro')
+        }
     }
 
     document.querySelector('#name-cadastro').value = null
@@ -116,7 +120,9 @@ buttonSalvar.addEventListener('click', async (evento) => {
         document.querySelector('#estado-consultar').value = null
         document.querySelector('#cpf-search').value = null
     } catch (error) {
-        console.log(error.response)
+        if (error.response.status === 400) {
+            return alert('o CPF ou o Email informado já possui cadastro')
+        }
     }
 
 })
@@ -126,6 +132,13 @@ const buttonDeletar = document.querySelector('#btn-deletar')
 buttonDeletar.addEventListener('click', async (evento) => {
     try {
         evento.preventDefault()
+
+        const verificConfirmacao = confirm('Você realmente deseja deletar esse cliente permanentemente?')
+
+
+        if (!verificConfirmacao) {
+            return
+        }
 
         await axios.delete(`${url}/clientes/${idClienteComsultado}`)
 
