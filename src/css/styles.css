@@ -27,10 +27,8 @@ main {
     background-color: #ffffff;
     height: 100vh;
     border-radius: 0px 18px 18px 0px;
-    position: relative;
-    transition: all .5s;
-    min-width: 82px;
-    z-index: 2;
+    position: absolute;
+
 }
 
 #sidebar_content {
@@ -106,7 +104,9 @@ main {
 }
 
 .container {
-    width: 80%;
+    margin: 5rem;
+    justify-content: center;
+    width: 75%;
     height: 80vh;
     display: flex;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.212);
@@ -125,15 +125,16 @@ main {
     width: 31rem;
 }
 
+
 .form {
-    width: 100%;
+    width: 50rem;
     height: 80vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     background-color: #fff;
-    padding: 3rem;
+    padding: 5rem;
 }
 
 .form-header {
@@ -143,8 +144,10 @@ main {
 }
 
 .confirm-button {
-    display: flex;
-    align-items: center;
+    display: none;
+    align-items: end;
+    margin-left: 34rem;
+
 }
 
 .confirm-button button {
@@ -159,33 +162,41 @@ main {
     background-color: #6b63fff1;
 }
 
-.confirm-delete {
-    position: absolute;
-    top: 15rem;
-}
-
-.confirm-delete button {
-    color: #0a0a0a;
-    border: none;
-    background-color: #fafafa;
-    border-radius: 1px;
-    cursor: pointer;
-    background-color: #fffffff1;
-    width: 1rem;
-    height: 1rem;
-
-}
-
-.confirm-delete button:hover {
-    background-color: #b60202f1;
-    border-radius: 8px;
-    align-items: center;
-}
-
 .confirm-button button a {
     text-decoration: none;
     font-weight: 500;
     color: #fff;
+}
+
+.confirm-button.delete {
+    display: none;
+    position: absolute;
+    top: 400px;
+    margin-left: 35rem;
+
+}
+
+.confirm-button.delete button {
+    align-items: flex-end;
+    display: block;
+}
+
+.confirm-button.active {
+    display: block;
+}
+
+.confirm-button.delete.active {
+    display: block;
+}
+
+.confirm-button.delete button:hover {
+    background-color: #b60202f1;
+    border-radius: 8px;
+    align-items: space;
+}
+
+.confirm-button.cadastrar {
+    display: block;
 }
 
 .input-box input:focus-visible {
@@ -208,21 +219,32 @@ main {
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 0rem;
+    float: left;
+    width: 50%;
+    visibility: hidden;
+}
+
+.input-group.cadastro.active {
+    visibility: visible;
 }
 
 
+.input-group.active {
+    visibility: visible;
+}
+
 .content {
-    visibility: hidden;
-    position: absolute;
+    display: none;
+    position: block;
 }
 
 
 .content.show {
-    visibility: visible;
+    display: flex;
 }
 
-.teste {
-    display: none
+#cadastrar {
+    justify-content: center;
 }
 
 

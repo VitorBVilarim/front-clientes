@@ -1,6 +1,6 @@
 const buttonCadastrar = document.querySelector('#btn-cadastrar')
 const url = 'http://ec2-18-230-201-203.sa-east-1.compute.amazonaws.com:3000'
-console.log(url)
+
 buttonCadastrar.addEventListener('click', async (evento) => {
     evento.preventDefault()
 
@@ -15,6 +15,31 @@ buttonCadastrar.addEventListener('click', async (evento) => {
     const cidade = document.querySelector('#cidade-cadastro').value
     const estado = document.querySelector('#estado-cadastro').value
 
+    if (
+        !nome || !telefone || !cpf || !email || !cep || !rua || !cidade || !estado
+    ) {
+        alert('Preencha todos os campos.')
+    }
+
+    const verificNumeroNome = nome.search(/[0-9]/)
+    if (verificNumeroNome !== -1) {
+        return alert('Informe um nome valido.')
+    }
+
+    const verificTelefoneLength = telefone.length > 13 ? true : false
+    if (!verificTelefoneLength) {
+        return alert('Informe um telefone valido.')
+    }
+
+    const verificCpfLength = cpf.length === 14 ? true : false
+    if (!verificCpfLength) {
+        return alert('Informe um Cpf valido.')
+    }
+
+    const verificCepLength = cep.length === 9 ? true : false
+    if (!verificCepLength) {
+        return alert('Informe um Cep valido.')
+    }
 
 
     try {
@@ -53,6 +78,8 @@ let idClienteComsultado = ''
 buttonConsultar.addEventListener('click', async (evento) => {
     evento.preventDefault()
 
+
+
     const clienteCpf = document.querySelector('#cpf-search').value
 
     const cliente = await axios.get(`${url}/clientes/?cpf=${clienteCpf.replace(/([0-9]{3})(.)([0-9]{3})(.)([0-9]{3})(-)([0-9]{2})/, "$1$3$5$7")}`)
@@ -79,11 +106,33 @@ buttonConsultar.addEventListener('click', async (evento) => {
     document.querySelector('#rua-consultar').value = rua
     document.querySelector('#cidade-consultar').value = cidade
     document.querySelector('#estado-consultar').value = estado
+
+    const botoes = document.querySelectorAll('.confirm-button')
+    botoes.forEach((botao) => {
+        botao.classList.add('active')
+    })
+
+    const inputs = document.querySelectorAll('.input-group')
+
+    const inputsConsulta = []
+    const formatacaoInputs = inputs.forEach((input) => {
+        if (input.className === "input-group") {
+            inputsConsulta.push(input)
+        }
+
+        const exibirInputs = inputsConsulta.forEach((input) => {
+            input.classList.add('active')
+            console.log(input)
+        })
+    })
+
 })
+
+
 
 // BOTAO SALVAR / ATUALIZAR DADOS 
 const buttonSalvar = document.querySelector('#btn-salvar')
-
+const inputs = document.querySelectorAll('.input-group')
 buttonSalvar.addEventListener('click', async (evento) => {
     evento.preventDefault()
 
@@ -97,6 +146,32 @@ buttonSalvar.addEventListener('click', async (evento) => {
     const rua = document.querySelector('#rua-consultar').value
     const cidade = document.querySelector('#cidade-consultar').value
     const estado = document.querySelector('#estado-consultar').value
+
+    if (
+        !nome || !telefone || !cpf || !email || !cep || !rua || !cidade || !estado
+    ) {
+        alert('Preencha todos os campos.')
+    }
+
+    const verificNumeroNome = nome.search(/[0-9]/)
+    if (verificNumeroNome !== -1) {
+        return alert('Informe um nome valido.')
+    }
+
+    const verificTelefoneLength = telefone.length > 13 ? true : false
+    if (!verificTelefoneLength) {
+        return alert('Informe um telefone valido.')
+    }
+
+    const verificCpfLength = cpf.length === 14 ? true : false
+    if (!verificCpfLength) {
+        return alert('Informe um Cpf valido.')
+    }
+
+    const verificCepLength = cep.length === 9 ? true : false
+    if (!verificCepLength) {
+        return alert('Informe um Cep valido.')
+    }
 
     try {
         await axios.put(`${url}/clientes/${idClienteComsultado}`, {
@@ -125,6 +200,23 @@ buttonSalvar.addEventListener('click', async (evento) => {
         }
     }
 
+    const botoes = document.querySelectorAll('.confirm-button')
+    botoes.forEach((botao) => {
+        botao.classList.remove('active')
+    })
+
+    const inputs = document.querySelectorAll('.input-group')
+    const inputsConsulta = []
+    const formatacaoInputs = inputs.forEach((input) => {
+        if (input.className === "input-group active") {
+            inputsConsulta.push(input)
+        }
+
+        const removerExibicaoConsulta = inputsConsulta.forEach((input) => {
+            input.classList.remove('active')
+        })
+    })
+
 })
 
 const buttonDeletar = document.querySelector('#btn-deletar')
@@ -133,7 +225,7 @@ buttonDeletar.addEventListener('click', async (evento) => {
     try {
         evento.preventDefault()
 
-        const verificConfirmacao = confirm('Você realmente deseja deletar esse cliente permanentemente?')
+        const verificConfirmacao = confirm('o Cliente vai ser deletado permanentemente')
 
 
         if (!verificConfirmacao) {
@@ -154,4 +246,22 @@ buttonDeletar.addEventListener('click', async (evento) => {
     document.querySelector('#cidade-consultar').value = null
     document.querySelector('#estado-consultar').value = null
     document.querySelector('#cpf-search').value = null
+
+    const botoes = document.querySelectorAll('.confirm-button')
+    botoes.forEach((botao) => {
+        botao.classList.remove('active')
+    })
+
+    const inputs = document.querySelectorAll('.input-group')
+    const inputsConsulta = []
+    const formatacaoInputs = inputs.forEach((input) => {
+        if (input.className === "input-group active") {
+            inputsConsulta.push(input)
+        }
+
+        const removerExibicaoConsulta = inputsConsulta.forEach((input) => {
+            input.classList.remove('active')
+        })
+    })
+
 })

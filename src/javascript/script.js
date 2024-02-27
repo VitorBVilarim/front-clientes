@@ -15,8 +15,6 @@ botoesColor.forEach((botao) => {
 function botaoClicked(botao) {
     const conteudoConsulta = document.querySelectorAll('.content')
 
-
-
     conteudoConsulta.forEach((conteudo) => {
         conteudo.classList.remove('show')
     })
@@ -32,6 +30,24 @@ function botaoClicked(botao) {
 
 function botaoColorClicked(botao) {
     const conteudos = document.querySelectorAll('.side_item')
+    const inputs = document.querySelectorAll('.input-group')
+
+    const inputsConsulta = []
+    const formatacaoInputs = inputs.forEach((input) => {
+        if (input.className === "input-group active") {
+            inputsConsulta.push(input)
+        }
+
+        const removerExibicaoConsulta = inputsConsulta.forEach((input) => {
+            input.classList.remove('active')
+        })
+    })
+
+    const botoes = document.querySelectorAll('.confirm-button')
+    botoes.forEach((botao) => {
+        botao.classList.remove('active')
+    })
+
 
     conteudos.forEach((conteudo) => {
         conteudo.classList.remove('active')

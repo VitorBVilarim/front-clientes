@@ -2,7 +2,7 @@
 
 
 let cepCadastro = document.getElementById("cep-cadastro");
-cepCadastro.addEventListener('blur', async () => {
+cepCadastro.addEventListener('keyup', async () => {
 
     let cepCadastro = document.getElementById("cep-cadastro").value
 
@@ -23,7 +23,7 @@ cepCadastro.addEventListener('blur', async () => {
 })
 
 let cepConsultar = document.getElementById("cep-consultar");
-cepConsultar.addEventListener('blur', async () => {
+cepConsultar.addEventListener('keyup', async () => {
 
     let cepConsultar = document.getElementById("cep-consultar").value
 
